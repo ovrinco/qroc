@@ -1,0 +1,28 @@
+[package]
+name = "qroc-standalone"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "Apache-2.0"
+[dependencies]
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.145"
+sha2 = "=0.10.9"
+thiserror = "=2.0.17"
+stratum-api = { path = "dependencies/stratum-api" }
+
+[[test]]
+name = "t01-bridge"
+path = "tests/T01/bridge.rs"
+
+[[test]]
+name = "fake_shim"
+path = "tests/T302/fake_shim.rs"
+
+[[bin]]
+name = "qroc-intake"
+path = "src/bin/qroc-intake.rs"
+
+[[bin]]
+name = "qroc-run"
+path = "src/bin/qroc-run.rs"

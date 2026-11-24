@@ -1,0 +1,20 @@
+[package]
+name = "phod-cli"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "phod-semantic"
+path = "src/main.rs"
+
+[dependencies]
+phod-check = { path = "../phod-check" }
+phod-ir = { path = "../phod-ir" }
+phod-legacy = { path = "../phod-legacy" }
+serde.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

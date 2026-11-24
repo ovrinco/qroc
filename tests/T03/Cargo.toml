@@ -1,0 +1,18 @@
+[package]
+license = "Apache-2.0"
+name = "qroc-t03-retained-compatibility"
+version = "0.1.0"
+edition = "2024"
+publish = false
+[dependencies]
+qroc-standalone = { path = "../.." }
+serde_json = "=1.0.145"
+[[test]]
+name = "gate-compatible"
+path = "compat/astra_qroc_domain_review.rs"
+[[test]]
+name = "astra-provenance-compatible"
+path = "compat/astra_qroc_provenance.rs"
+[[test]]
+name = "luna-provenance-compatible"
+path = "compat/luna_l20_qroc_provenance.rs"

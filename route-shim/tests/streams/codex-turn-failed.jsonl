@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"fixture-thread-fail"}
+{"type":"turn.started"}
+{"type":"error","message":"stream disconnected before completion; auth Bearer sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+{"type":"turn.failed","error":{"message":"stream disconnected before completion","access_token":"eyJfixtureSENTINELpayload0123456789"}}

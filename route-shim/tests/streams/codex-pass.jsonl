@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"fixture-thread-pass"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"reasoning","text":"Drafting the contract."}}
+{"type":"item.completed","item":{"id":"item_1","type":"agent_message","text":"{\"contracts\":[]}"}}
+{"type":"turn.completed","usage":{"input_tokens":412,"cached_input_tokens":0,"output_tokens":38}}

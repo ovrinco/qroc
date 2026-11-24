@@ -1,0 +1,16 @@
+{
+  "constraints": {
+    "target.language": "rust",
+    "verification.required_checks": [
+      "compile"
+    ]
+  },
+  "derived_present": false,
+  "intent": {
+    "name": "semantic_fixture",
+    "purpose": "Exercise deterministic legacy normalization"
+  },
+  "schema_version": 1,
+  "source_hash": "sha256:fixture-source",
+  "source_path": "fixtures/semantic_fixture.phod"
+}

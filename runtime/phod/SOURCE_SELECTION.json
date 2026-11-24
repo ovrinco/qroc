@@ -1,0 +1,26 @@
+[
+  {
+    "source": "/example/operator/04_memory/runs/qroc/2026-10-01_standalone_campaign/inputs/salvage/vendor/phod/derive/src/types.rs",
+    "candidate": "runtime/phod/source/derive/src/types.rs",
+    "sha256": "450f55e93936e4bf1ce0299a126a6ccf8513bf6e810a2143437fbbc52571f527",
+    "selection": "unchanged retained source"
+  },
+  {
+    "source": "/example/operator/04_memory/runs/qroc/2026-10-01_standalone_campaign/inputs/salvage/vendor/phod/derive/src/codegen.rs",
+    "candidate": "runtime/phod/source/derive/src/codegen.rs",
+    "sha256": "23d52770e6da99faa2b7dd88174bff0751b5a28ad423824307aa8557de8f6b3d",
+    "selection": "unchanged retained source"
+  },
+  {
+    "source": "/example/operator/04_memory/runs/qroc/2026-10-01_standalone_campaign/inputs/salvage/vendor/phod/derive/src/codegen_rust.rs",
+    "candidate": "runtime/phod/source/derive/src/codegen_rust.rs",
+    "sha256": "78dc5a34a966075da0a7ef6454ebed2f8209a2cf28788494fc787399c1bfe1ac",
+    "selection": "unchanged retained source"
+  },
+  {
+    "source": "/example/operator/04_memory/runs/qroc/2026-10-01_standalone_campaign/inputs/salvage/vendor/phod/derive/src/lib.rs",
+    "source_sha256": "9cade5723c19521fb0fddef1dab12704003fc16083806c16de97b1d8d36474dd",
+    "candidate": "runtime/phod/source/derive/src/lib.rs",
+    "selection": "retained error/result definitions; network/corpus modules excluded"
+  }
+]

@@ -1,0 +1,350 @@
+{
+ "schema": "qroc-gate-rubrics/1",
+ "standing": "drafted",
+ "note": "Thresholds are not set here; they stay in the engine (90, Gate 2 92). Gate 4 keeps its own semantic contract.",
+ "gates": {
+  "GATE_1": {
+   "meaning": "Gate 1 decides whether the planning set (strategy brief, pre-mortem, PRD, validation plan, technical architecture) is specific, consistent and testable enough to begin design alternatives and the roadmap; it does not judge implementation or product acceptance.",
+   "joins": [
+    "STRATEGY_BRIEF",
+    "PRE_MORTEM",
+    "PRD",
+    "VALIDATION_PLAN",
+    "TECHNICAL_ARCHITECTURE"
+   ],
+   "criteria": [
+    {
+     "name": "Problem and Users",
+     "max": 15,
+     "question": "Does the strategy brief state the problem with evidence, the intended users and measurable success metrics?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); STRATEGY_BRIEF"
+    },
+    {
+     "name": "Requirement Testability",
+     "max": 25,
+     "question": "Are the PRD's functional requirements numbered, bounded, prioritised and each given an acceptance criterion a tester can check?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); PRD"
+    },
+    {
+     "name": "Risk Coverage",
+     "max": 15,
+     "question": "Does the pre-mortem name the likely failure modes and does each have a control or an owner question?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); PRE_MORTEM"
+    },
+    {
+     "name": "Validation Readiness",
+     "max": 20,
+     "question": "Does the validation plan map hypotheses and requirements to tests with thresholds and decision rules?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); VALIDATION_PLAN"
+    },
+    {
+     "name": "Architecture Fit",
+     "max": 15,
+     "question": "Does the technical architecture meet the PRD's requirements and constraints, with open choices named rather than hidden?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); TECHNICAL_ARCHITECTURE"
+    },
+    {
+     "name": "Cross-Document Consistency",
+     "max": 10,
+     "question": "Do the five documents agree on scope, terms, priorities and open questions?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); joins all five inputs"
+    }
+   ]
+  },
+  "GATE_2": {
+   "meaning": "Gate 2 decides whether the chosen design, interface specification, roadmap and implementation plan are coherent and executable enough to be broken into epics and slices.",
+   "joins": [
+    "DESIGN_ALTERNATIVES",
+    "ROADMAP",
+    "UI_UX_SPEC",
+    "IMPLEMENTATION_PLAN"
+   ],
+   "criteria": [
+    {
+     "name": "Design Choice Rationale",
+     "max": 20,
+     "question": "Are real alternatives compared and is the chosen design justified against the requirements?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); DESIGN_ALTERNATIVES"
+    },
+    {
+     "name": "Interface Specification",
+     "max": 20,
+     "question": "Can the interface be built from the UI/UX specification without guessing states, inputs or errors?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); UI_UX_SPEC"
+    },
+    {
+     "name": "Roadmap Sequencing",
+     "max": 20,
+     "question": "Is the roadmap ordered by dependencies with exit criteria per milestone?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); ROADMAP"
+    },
+    {
+     "name": "Implementation Executability",
+     "max": 25,
+     "question": "Does the implementation plan give work breakdown, dependencies, acceptance criteria and rollback a team can execute?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); IMPLEMENTATION_PLAN"
+    },
+    {
+     "name": "Cross-Document Consistency",
+     "max": 15,
+     "question": "Do design, interface, roadmap and plan agree with each other and with the PRD and architecture?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); joins all four inputs"
+    }
+   ]
+  },
+  "GATE_3": {
+   "meaning": "Gate 3 decides whether the epics and slice index break the planned work into independent, testable slices that can be handed to agents as directives and tasks.",
+   "joins": [
+    "EPICS",
+    "SLICE_INDEX"
+   ],
+   "criteria": [
+    {
+     "name": "Epic Coverage",
+     "max": 30,
+     "question": "Do the epics cover every P0 requirement and planned milestone, with nothing silently dropped?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); EPICS"
+    },
+    {
+     "name": "Slice Independence",
+     "max": 25,
+     "question": "Can each slice be built and verified on its own, with its dependencies stated?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); SLICE_INDEX"
+    },
+    {
+     "name": "Slice Acceptance",
+     "max": 25,
+     "question": "Does each slice carry an observable acceptance check?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); SLICE_INDEX"
+    },
+    {
+     "name": "Traceability",
+     "max": 20,
+     "question": "Does each slice trace to an epic and each epic to requirements?",
+     "source": "src/registry.rs product_inputs and src/qroc.rs document_template (gate review contract); joins EPICS and SLICE_INDEX"
+    }
+   ]
+  },
+  "GATE_5": {
+   "meaning": "Gate 5 (Brand & GTM Coherence Review) decides whether BRAND_GUIDE, GO_TO_MARKET meet the review's criteria before the domain continues.",
+   "joins": [
+    "BRAND_GUIDE",
+    "GO_TO_MARKET"
+   ],
+   "criteria": [
+    {
+     "name": "Brand-Product Alignment",
+     "max": 20,
+     "question": "Does the brand voice match the product's actual capabilities and target audience?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:969"
+    },
+    {
+     "name": "GTM Channel Justification",
+     "max": 20,
+     "question": "Is each channel justified by where the target audience spends attention?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:987"
+    },
+    {
+     "name": "Messaging-Positioning Consistency",
+     "max": 20,
+     "question": "Do GTM messages use the Brand Guide's voice and values?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:1004"
+    },
+    {
+     "name": "Execution Feasibility",
+     "max": 20,
+     "question": "Are proposed strategies executable with realistic team size and budget?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:1020"
+    },
+    {
+     "name": "Measurability",
+     "max": 20,
+     "question": "Does every strategy have defined KPIs and measurement methods?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:1032"
+    }
+   ]
+  },
+  "GATE_6": {
+   "meaning": "Gate 6 (Investment Readiness Review) decides whether FINANCIAL_OVERVIEW, FINANCIAL_SENSITIVITY, SLIDE_DECK meet the review's criteria before the domain continues.",
+   "joins": [
+    "FINANCIAL_OVERVIEW",
+    "FINANCIAL_SENSITIVITY",
+    "SLIDE_DECK"
+   ],
+   "criteria": [
+    {
+     "name": "Financial Projection Credibility",
+     "max": 20,
+     "question": "Do revenue projections decompose from customers x price x frequency?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:1075"
+    },
+    {
+     "name": "Sensitivity Analysis Rigor",
+     "max": 20,
+     "question": "Does the tornado analysis cover all key Financial Overview assumptions?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:1095"
+    },
+    {
+     "name": "Slide Deck Narrative",
+     "max": 20,
+     "question": "Does the deck follow a coherent story arc from problem to ask?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:1113"
+    },
+    {
+     "name": "Cross-Domain Consistency",
+     "max": 20,
+     "question": "Do financials match the Business Plan revenue model?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:1132"
+    },
+    {
+     "name": "Completeness for Purpose",
+     "max": 20,
+     "question": "Is the package sufficient for its stated purpose?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/business.ts:1149"
+    }
+   ]
+  },
+  "GATE_7": {
+   "meaning": "Gate 7 (Acquisition Strategy Review) decides whether MESSAGING_FRAMEWORK, OUTBOUND_STRATEGY, INBOUND_STRATEGY meet the review's criteria before the domain continues.",
+   "joins": [
+    "MESSAGING_FRAMEWORK",
+    "OUTBOUND_STRATEGY",
+    "INBOUND_STRATEGY"
+   ],
+   "criteria": [
+    {
+     "name": "Message Clarity",
+     "max": 20,
+     "question": "Is the one-liner under 15 words, jargon-free, and specific to this product?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/presence.ts:569"
+    },
+    {
+     "name": "Audience-Message Fit",
+     "max": 20,
+     "question": "Are messages tailored per persona or segment from the Business domain?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/presence.ts:584"
+    },
+    {
+     "name": "Channel-Audience Match",
+     "max": 20,
+     "question": "Are proposed outbound and inbound channels justified by where the target audience actually spends attention?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/presence.ts:601"
+    },
+    {
+     "name": "Outbound-Inbound Coordination",
+     "max": 20,
+     "question": "Do outbound and inbound strategies complement each other rather than duplicate?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/presence.ts:618"
+    },
+    {
+     "name": "Measurability & Baselines",
+     "max": 20,
+     "question": "Are KPIs defined per channel with targets?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/presence.ts:634"
+    }
+   ]
+  },
+  "GATE_8": {
+   "meaning": "Gate 8 (Creative Execution Review) decides whether WEBSITE_SOCIAL, ADS_STRATEGY, VISUAL_ASSETS meet the review's criteria before the domain continues.",
+   "joins": [
+    "WEBSITE_SOCIAL",
+    "ADS_STRATEGY",
+    "VISUAL_ASSETS"
+   ],
+   "criteria": [
+    {
+     "name": "Brand Consistency",
+     "max": 25,
+     "question": "Do website, social, and ad specs use the Brand Guide's color palette, typography, voice, and visual style?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/presence.ts:690"
+    },
+    {
+     "name": "Platform Specificity",
+     "max": 25,
+     "question": "Are website pages specified at the level a developer can build from?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/presence.ts:707"
+    },
+    {
+     "name": "Visual Asset Completeness",
+     "max": 25,
+     "question": "Are all required assets specified: logo package, color system, typography, icons, and templates?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/presence.ts:725"
+    },
+    {
+     "name": "Deliverability",
+     "max": 25,
+     "question": "Can a designer or developer execute from these specs without guessing?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/presence.ts:743"
+    }
+   ]
+  },
+  "GATE_9": {
+   "meaning": "Gate 9 (Regulatory Foundation Review) decides whether COMPLIANCE_PRIVACY, PR_POLICY, LICENSING meet the review's criteria before the domain continues.",
+   "joins": [
+    "COMPLIANCE_PRIVACY",
+    "PR_POLICY",
+    "LICENSING"
+   ],
+   "criteria": [
+    {
+     "name": "Regulatory Coverage",
+     "max": 25,
+     "question": "Are all applicable regulations identified from data handling, geography, and sector?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/legal.ts:582"
+    },
+    {
+     "name": "Data Flow Compliance",
+     "max": 25,
+     "question": "Does the privacy policy accurately describe actual data practices?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/legal.ts:599"
+    },
+    {
+     "name": "Licensing Accuracy",
+     "max": 25,
+     "question": "Are all dependency licenses identified and compatibility verified?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/legal.ts:616"
+    },
+    {
+     "name": "Risk Stratification",
+     "max": 25,
+     "question": "Are legal risks categorized P0/P1/P2 with likelihood and impact?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/legal.ts:634"
+    }
+   ]
+  },
+  "GATE_10": {
+   "meaning": "Gate 10 (Operational Legal Review) decides whether TERMS, CONTRACTS, REGISTRY_PREP meet the review's criteria before the domain continues.",
+   "joins": [
+    "TERMS",
+    "CONTRACTS",
+    "REGISTRY_PREP"
+   ],
+   "criteria": [
+    {
+     "name": "Terms Enforceability",
+     "max": 25,
+     "question": "Are Terms structured with clear definitions, acceptance mechanisms, limitation of liability, and dispute resolution?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/legal.ts:691"
+    },
+    {
+     "name": "Contract Completeness",
+     "max": 25,
+     "question": "Are templates provided for the most common relationships?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/legal.ts:710"
+    },
+    {
+     "name": "Entity/Registration Readiness",
+     "max": 25,
+     "question": "Is entity selection justified for the funding strategy?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/legal.ts:730"
+    },
+    {
+     "name": "Cross-Domain Consistency",
+     "max": 25,
+     "question": "Do Terms match the product's actual capabilities from Product?",
+     "source": "90_archive/2026-10-04_qroc_legacy/src/domain/documentModels/legal.ts:750"
+    }
+   ]
+  }
+ }
+}
